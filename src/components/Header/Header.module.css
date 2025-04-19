@@ -1,20 +1,39 @@
-.nav {
-  display: flex;
-  gap: 24px;
-  font-size: 24px;
-  padding: 20px;
-  max-width: 1400px;
-  margin: 0;
-  margin: 0 auto;
+.headerSearch {
+  /* width: 100%; */
+  background-color: rgb(149, 149, 238);
+  padding: 8px;
   margin-bottom: 24px;
-  border-bottom: 2px solid grey;
 }
 
-.link {
-  color: black;
+.formSearch {
+  max-width: 360px;
+  border: 4px solid darkorange;
+  border-radius: 4px;
+  padding: 4;
+  margin: 0 auto;
+  text-align: start;
+  background-color: aliceblue;
+  position: relative;
 }
 
-.link.active {
-  color: firebrick;
-  text-decoration: underline;
+.btnSearch {
+  border: none;
+  outline: none;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 4px;
+  background-color: aliceblue;
+  position: absolute;
+  left: 0;
+  top: 10px;
+}
+
+.inputSearch {
+  border: none;
+  margin-left: 24px;
+  outline: none;
+  background-color: aliceblue;
+  font-size: 18px;
+  padding: 12px;
 }
