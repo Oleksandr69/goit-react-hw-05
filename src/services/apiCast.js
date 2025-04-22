@@ -8,14 +8,15 @@ const options = {
     // accept: 'application/json',
   },
 };
-const fetchSearch = async item => {
-  const urlSearch = `https://api.themoviedb.org/3/search/movie?include_adult=false&query=${item}&language=en-US&page=1`;
+
+const apiCast = async movieId => {
+  const url = `https://api.themoviedb.org/3/movie/${movieId}/credits?language=en-US`;
   try {
-    const response = await axios.get(urlSearch, options);
-    return response.data;
+    const response = await axios.get(url, options);
+    return response.data.cast;
   } catch (error) {
     console.log(error);
     throw error;
   }
 };
-export default fetchSearch;
+export default apiCast;

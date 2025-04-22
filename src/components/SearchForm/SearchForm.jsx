@@ -1,8 +1,8 @@
-import css from './Header.module.css';
+import { FaSection } from 'react-icons/fa6';
+import css from './SearchForm.module.css';
 import { FaSearch } from "react-icons/fa";
 
-
-const Header = ({onSearch}) => {
+const SearchForm = ({onSearch}) => {
 
         const handleSubmit = (evt) => {
         evt.preventDefault();
@@ -21,7 +21,7 @@ const Header = ({onSearch}) => {
     
 return (
 
-    <header className={css.headerSearch}>
+    <section className={css.headerSearch}>
             <form onSubmit={handleSubmit}>
             <div className = {css.formSearch}>
            
@@ -37,7 +37,7 @@ return (
             </div>
             </form>
 
-    </header>)
+    </section>)
     
 }
-export default Header;
+export default SearchForm;

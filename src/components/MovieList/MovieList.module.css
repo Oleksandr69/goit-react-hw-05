@@ -19,7 +19,7 @@ ul {
 
 .galleryItem {
   width: 280px;
-  height: 256px;
+  height: 268px;
   border: 1px solid #808080;
   display: block;
   transition: transform 0.4s;
@@ -37,11 +37,11 @@ ul {
 }
 
 .galleryDl {
-  margin-top: 40;
-  padding: 0;
+  margin-top: 14;
+  padding: 4px;
   display: flex;
   flex-direction: row;
-  align-items: end;
+  align-items: center;
   justify-content: space-around;
   text-align: center;
   background: #fff;
@@ -54,4 +54,5 @@ ul {
   letter-spacing: 0.04em;
   color: #2e2f42;
   padding: 0;
+  margin: 0;
 }

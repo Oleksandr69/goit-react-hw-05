@@ -16,6 +16,7 @@ const MovieList = lazy(() =>import('../MovieList/MovieList'));
 const MovieReviews = lazy(() => import('../MovieReviews/MovieReviews'));
 const MovieCast = lazy(() => import('../MovieCast/MovieCast'));
 
+
 function App() {
 
   return (
@@ -23,15 +24,14 @@ function App() {
       <Navigation />
       <Suspense fallback={<div>LOADING PAGE</div>}>
         <Routes>
-          <Route path='/' element={<HomePage />} >
-              {/* <Route path='list' element={<MovieList />} /> */}
-          </Route>
+          <Route path='/' element={<HomePage />} />
           <Route path='/movies' element={<MoviesPage />} />
-           
-          
-          <Route path='/movies/:movieId' element={<MovieDetailsPage />}  />
+          <Route path='/movies/:movieId' element={<MovieDetailsPage />}  >
+            <Route path='cast' element={<MovieCast />} />
+            <Route path='reviews' element={<MovieReviews />} />
+          </Route>
           <Route path='*' element={<NotFoundPage />} />
-          <Route path='/movies/*' element={<NotFoundPage />} />
+          {/* <Route path='/movies/*' element={<NotFoundPage />} /> */}
       </Routes>
       </Suspense>
     </div>

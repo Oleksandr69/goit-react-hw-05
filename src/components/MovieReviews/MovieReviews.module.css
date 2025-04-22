@@ -1,0 +1,10 @@
+.reviewsList {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+
+.reviewItem {
+  text-align: start;
+  font-size: 16px;
+}

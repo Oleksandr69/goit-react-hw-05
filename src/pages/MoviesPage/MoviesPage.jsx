@@ -3,46 +3,41 @@ import { FaSearch } from "react-icons/fa";
 import React, { useState, useEffect } from 'react';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-import fetchMovie from "../../services/apiSearch";
-import Header from '../../components/Header/Header';
+import { useLocation } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
+import fetchSearch from "../../services/apiSearch";
+import SearchForm from '../../components/SearchForm/SearchForm';
 import MovieList from '../../components/MovieList/MovieList';
 // import css from './MoviesPage.module.css'
-// import toast, { Toaster } from 'react-hot-toast';
-// const notify = (text) => toast(text);
+
 
 const MoviesPage = () => {
 
-    const [searchResult, setSearchResult] = useState([]);
-    const [search, setSearch] = useState('');
-
-    console.log(search);
-
-    const handleNewSearch = searchNew => {
+  const [searchResult, setSearchResult] = useState([]);
+  const [search, setSearch] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams({});
+  const location = useLocation();
+  console.log(location)
+  
+  // const query = searchParams.get('search');
+  // console.log(query);
+  // setSearch(query);
+  const handleNewSearch = searchNew => {
     setSearch(searchNew);
     setSearchResult([]);
-    // setPage(1);
-    };
+    searchParams.set('search', searchNew);
+    setSearchParams(searchParams);
 
-    // setSearch('');
-    // setSearchResult([])
+  };
+  
+  useEffect(() => {
 
-      useEffect (() => {
         async function fetchGallery() {
           try {
-            // setLoading(true);
-            // setErrBul(false);
-            // setPerPage(15);
-            const data = await fetchMovie(search);
-              console.log(data.results);
-              setSearchResult(data.results);
-            // setSearchResult(prev => [...prev, ...data.results]);
-            // setPageMax(data.total_pages);
-            // setResult(prev => [...prev, ...data.results]);
-    
+            const data = await fetchSearch(search);
+            setSearchResult(data.results);   
           } catch (error) {
               console.log(error);
-            // setErrBul(true);
-            // notify(error.message);
           } finally {
                 // setLoading(false);
             }
@@ -53,19 +48,19 @@ const MoviesPage = () => {
     
 
     return (
-        <>
-            <Header
-                onSearch={handleNewSearch} />
+      <>
+        <SearchForm
+          onSearch={handleNewSearch} />
             
-            <MovieList
-                moviesList={searchResult}
-            />
+        <MovieList
+          moviesList={searchResult}
+       />
 
-            <Suspense fallback={<div>Loading subpage...</div>}>
-            <Outlet />
-            </Suspense>
+        <Suspense fallback={<div>Loading subpage...</div>}>
+          <Outlet />
+        </Suspense>
 
-        </> 
+      </> 
     )
 
 }

@@ -1,3 +1,5 @@
+// /reviews?language=en-US&page=1'
+
 import axios from 'axios';
 
 const options = {
@@ -8,14 +10,17 @@ const options = {
     // accept: 'application/json',
   },
 };
-const fetchSearch = async item => {
-  const urlSearch = `https://api.themoviedb.org/3/search/movie?include_adult=false&query=${item}&language=en-US&page=1`;
+
+const apiReviews = async movieId => {
+  // 'https://api.themoviedb.org/3/movie/696506/reviews?language=en-US&page=1
+
+  const url = `https://api.themoviedb.org/3/movie/${movieId}/reviews?language=en-US&page=1`;
   try {
-    const response = await axios.get(urlSearch, options);
-    return response.data;
+    const response = await axios.get(url, options);
+    return response.data.results;
   } catch (error) {
     console.log(error);
     throw error;
   }
 };
-export default fetchSearch;
+export default apiReviews;

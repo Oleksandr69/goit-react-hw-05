@@ -1,0 +1,56 @@
+.containerMovie {
+  text-align: start;
+  padding: 20px;
+  border-bottom: 2px solid grey;
+}
+
+.infoMovie {
+  display: flex;
+  flex-direction: row;
+  margin-top: 36px;
+  gap: 36px;
+}
+
+.btnGoBack {
+  border: 2px solid grey;
+}
+
+.detailsList {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  text-align: start;
+  border-bottom: 2px solid grey;
+  font-size: 24px;
+  padding: 8px;
+}
+
+.detailsList p {
+  margin: 0;
+}
+
+.backLink {
+  justify-content: baseline;
+  align-items: baseline;
+  text-align: center;
+  font-size: 24px;
+}
+
+.genres h3 {
+  margin: 0;
+}
+
+.genresList {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  text-align: start;
+}
+
+/* .genres ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+} */
