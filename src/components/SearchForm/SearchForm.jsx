@@ -13,7 +13,7 @@ const SearchForm = ({onSearch}) => {
             alert('Please enter search term!');
             return;
             }
-            console.log(topic);
+            // console.log(topic);
             onSearch(topic);
             
         form.reset();

@@ -11,7 +11,7 @@ const MovieCast = () => {
             const fetchCast = async () => {
                 try {
                   const data = await apiCast(movieId);
-                  console.log(data);
+                  // console.log(data);
                   setCast(data.filter(item => item.profile_path));
                     
                 } catch (error) {

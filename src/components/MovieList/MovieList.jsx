@@ -5,14 +5,13 @@ import css from './MovieList.module.css'
 
 const MovieList = ({ moviesList }) => {
   const location = useLocation();
-  console.log(location.pathname);
-  console.log(location.search);
 
   return (<ul className={css.gallery}>
-    {moviesList.map((card) => {
+
+      {moviesList.map((card) => {
 
       return (<li key={card.id} className={css.galleryItem}>
-              <Link to={((location.pathname === '/') ? 'movies/' : '') + card.id.toString()} className={css.galleryLink} state={location.search}>
+        <Link to={'/movies/' + card.id.toString()} state={{ list: location }} className={css.galleryLink}>
                 <img src={'https://image.tmdb.org/t/p/w500' + card.poster_path} alt={card.title} className={css.galleryImage} />
               </Link>
               <div className={css.galleryDl}>

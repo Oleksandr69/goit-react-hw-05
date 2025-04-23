@@ -5,15 +5,16 @@ import css from './MovieReviews.module.css';
 
 
 const MovieReviews = () => {
-        const [reviews, setReviews] = useState([]);
-        const { movieId } = useParams();
+    const [reviews, setReviews] = useState([]);
+    const { movieId } = useParams();
+    
 
         useEffect(() => {
             const fetchReviews = async () => {
                 try {
                     const data = await apiReviews(movieId);
                     setReviews(data);
-                    console.log(data);
+                    // console.log(data);
                 } catch (error) {
                     console.log(error);
                 }

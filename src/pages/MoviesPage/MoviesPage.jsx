@@ -1,9 +1,8 @@
 
 import { FaSearch } from "react-icons/fa";
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-import { useLocation } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
 import fetchSearch from "../../services/apiSearch";
 import SearchForm from '../../components/SearchForm/SearchForm';
@@ -14,20 +13,13 @@ import MovieList from '../../components/MovieList/MovieList';
 const MoviesPage = () => {
 
   const [searchResult, setSearchResult] = useState([]);
-  const [search, setSearch] = useState('');
   const [searchParams, setSearchParams] = useSearchParams({});
-  const location = useLocation();
-  console.log(location)
-  
-  // const query = searchParams.get('search');
-  // console.log(query);
-  // setSearch(query);
-  const handleNewSearch = searchNew => {
-    setSearch(searchNew);
-    setSearchResult([]);
-    searchParams.set('search', searchNew);
-    setSearchParams(searchParams);
 
+  const search = searchParams.get('search') || '';
+  // console.log(searchParams.get('search'));
+
+  const handleNewSearch = searchNew => {
+     setSearchParams({ search: searchNew });
   };
   
   useEffect(() => {
@@ -35,7 +27,10 @@ const MoviesPage = () => {
         async function fetchGallery() {
           try {
             const data = await fetchSearch(search);
-            setSearchResult(data.results);   
+            setSearchResult(data.results);
+            
+            // console.log(data.results);
+            // console.log(search);
           } catch (error) {
               console.log(error);
           } finally {
@@ -43,7 +38,7 @@ const MoviesPage = () => {
             }
         };
         fetchGallery();
-      
+   
       }, [search]);
     
 
@@ -52,9 +47,9 @@ const MoviesPage = () => {
         <SearchForm
           onSearch={handleNewSearch} />
             
-        <MovieList
+        {searchResult.length > 0 && <MovieList
           moviesList={searchResult}
-       />
+        />}
 
         <Suspense fallback={<div>Loading subpage...</div>}>
           <Outlet />
